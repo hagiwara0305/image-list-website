@@ -1,0 +1,13 @@
+{
+    "name": "shion/php-pixiv-test-page",
+    "authors": [
+        {
+            "name": "hagiwara0305",
+            "email": "42800107+Hagiwara35@users.noreply.github.com"
+        }
+    ],
+    "require": {
+        "twig/twig": "*",
+        "nikic/fast-route": "^1.3"
+    }
+}
