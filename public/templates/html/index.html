@@ -1,12 +1,11 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <link rel="stylesheet" type="text/css" href="public/templates/css/test.css">
-        <script src="public/templates/js/test.js"></script>
-        <title>Twig Example</title>
-    </head>
-    <body>
-        {{ name }}
-    </body>
-</html>
+{% extends "html/base.html" %}
+
+{% block title %}Twig Test Index{% endblock %}
+
+{% block content %}
+  <h1>{{ name }}</h1>
+{% endblock %}
+
+{% block js %}
+    <script src="./public/templates/js/test.js"></script>
+{% endblock %}
