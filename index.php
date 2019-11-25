@@ -63,7 +63,7 @@ function doAction($handler, $vars)
 
     switch ($handler) {
         case "index_page":
-            echo $twig->render('index.html', [
+            echo $twig->render('html/index.html', [
                 'name' => 'Hello Twig'
                 ]);
             break;
