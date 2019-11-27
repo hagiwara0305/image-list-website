@@ -1,7 +1,12 @@
 <?php
-require '../vendor/autoload.php';
+require './vendor/autoload.php';
 
-$loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/templates');
+use src\api\Api;
+
+header('Content-Type: text/html; charset=UTF-8');
+header("Access-Control-Allow-Origin: *");
+
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/public/templates');
 $twig = new \Twig\Environment($loader, [
     'auto_reload' => true,
     'debug' => true
@@ -12,6 +17,7 @@ function route()
     // ルーティングのルールを指定する
     $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/', 'index_page');
+        $r->addRoute('GET', '/api/get-images', 'images_list_api_request');
     });
 
     // リクエストパラメータを取得する
@@ -57,9 +63,13 @@ function doAction($handler, $vars)
 
     switch ($handler) {
         case "index_page":
-            echo $twig->render('index.html', [
+            echo $twig->render('html/index.html', [
                 'name' => 'Hello Twig'
                 ]);
+            break;
+        case "images_list_api_request":
+            $api_object = new Api();
+            print($api_object->get_api_json(isset($_GET['num']) ? $_GET['num'] : null));
             break;
     }
 }

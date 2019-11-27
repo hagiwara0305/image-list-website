@@ -1,0 +1,13 @@
+<html>
+<head>
+    <title>{% block title %}{% endblock %} - My Webpage</title>
+    {% block css %}
+    <link rel="stylesheet" href="./public/templates/css/test.css">
+    {% endblock %}
+</head>
+<body>
+  <div id="content">{% block content %}{% endblock %}</div>
+
+  {% block js %}{% endblock %}
+</body>
+</html>
