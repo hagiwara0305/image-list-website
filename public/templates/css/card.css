@@ -17,6 +17,8 @@
   margin: auto;
   box-shadow: 0px 0px 10px rgba(0,0,0,0.3);
   overflow: hidden;
+  background-size:contain;
+  background-repeat: no-repeat;
 }
 
 .card:hover {
@@ -57,21 +59,20 @@ h2 small {
 
 .card:hover h2 {
   margin-top: 100px;
-  color: #fff;
+  color: rgba(255, 255, 255, 0);
 }
 
 .card:hover h2 small {
-  color: #fff;
+  color: rgba(255, 255, 255, 0);
 }
 
-.cta {
-  color: #fff;
-  border: 2px solid #2196F3;
-  background-color: #2196F3;
-  padding: 10px 25px;
-  border-radius: 50px;
-  font-size: 17px;
-  text-decoration: none;
-  font-weight: bold;
+#image-form .modal_img {
+  max-width: 100%;
+  height: auto;
 }
 
+#image-form p {
+  width: 100%;
+  height: auto;
+  word-break: break-all;
+}

@@ -13,63 +13,72 @@
 {% endblock %}
 
 {% block content %}
-  <a href="#" class="card_rink">
+  <!-- <a href="#image-form" class="card_rink modal" rel="modal:open">
+    <div class="card transition">
+      <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
+      <div class="card_circle transition"></div>
+    </div>
+  </a> -->
+
+  <a href="#image-form" class="card_rink" rel="modal:open">
+    <div class="card transition" style="background-image: url(/public/pixiv_images/535174/01DTNN0B4SH7BCPZAR026SQVQ3.jpg)">
+      <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
+      <div class="card_circle transition"></div>
+    </div>
+  </a>
+
+  <a href="#image-form" class="card_rink" rel="modal:open">
     <div class="card transition">
       <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
       <div class="card_circle transition"></div>
     </div>
   </a>
 
-  <a href="#" class="card_rink">
+  <a href="#image-form" class="card_rink" rel="modal:open">
     <div class="card transition">
       <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
       <div class="card_circle transition"></div>
     </div>
   </a>
 
-  <a href="#" class="card_rink">
+  <a href="#image-form" class="card_rink" rel="modal:open">
     <div class="card transition">
       <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
       <div class="card_circle transition"></div>
     </div>
   </a>
 
-  <a href="#" class="card_rink">
+  <a href="#image-form" class="card_rink" rel="modal:open">
     <div class="card transition">
       <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
       <div class="card_circle transition"></div>
     </div>
   </a>
 
-  <a href="#" class="card_rink">
+  <a href="#image-form" class="card_rink" rel="modal:open">
     <div class="card transition">
       <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
       <div class="card_circle transition"></div>
     </div>
   </a>
 
-  <a href="#" class="card_rink">
+  <a href="#image-form" class="card_rink" rel="modal:open">
     <div class="card transition">
       <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
       <div class="card_circle transition"></div>
     </div>
   </a>
 
-  <a href="#" class="card_rink">
-    <div class="card transition">
-      <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
-      <div class="card_circle transition"></div>
+  <form id="image-form" class="modal">
+    <div>
+      <img class="modal_img" src="./public/pixiv_images/535174/01DTNN0B4SH7BCPZAR026SQVQ3.jpg">
+      <p>{{ name }}</p>
+      <p>説明...hogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehogehoge</p>
     </div>
-  </a>
+  </form>
 
-  <a href="#" class="card_rink">
-    <div class="card transition">
-      <h2 class="transition">{{ name }}<br><small>description line here</small></h2>
-      <div class="card_circle transition"></div>
-    </div>
-  </a>
 {% endblock %}
 
 {% block footer_js %}
-    <script src="./public/templates/js/test.js"></script>
+    <script src="./public/templates/js/modal.js"></script>
 {% endblock %}
