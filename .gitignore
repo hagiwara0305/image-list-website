@@ -1,2 +1,3 @@
 /vendor/
 /public/pixiv_images/*
+/node_modules/*

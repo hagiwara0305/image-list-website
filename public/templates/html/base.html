@@ -5,6 +5,7 @@
     <link rel="stylesheet" href="./public/templates/css/w3.css">
     <link rel="stylesheet" href="./public/templates/css/base.css">
     {% block css %}{% endblock %}
+    {% block header_js %}{% endblock %}
 </head>
 <body>
   <header>
@@ -24,6 +25,6 @@
     {% block content %}{% endblock %}
   </div>
 
-  {% block js %}{% endblock %}
+  {% block footer_js %}{% endblock %}
 </body>
 </html>

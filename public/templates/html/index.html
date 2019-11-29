@@ -4,6 +4,12 @@
 
 {% block css %}
   <link rel="stylesheet" href="./public/templates/css/card.css">
+  <link rel="stylesheet" href="./node_modules/jquery-modal/jquery.modal.min.css">
+{% endblock %}
+
+{% block header_js %}
+  <script src="./node_modules/jquery/dist/jquery.min.js"></script>
+  <script src="./node_modules/jquery-modal/jquery.modal.min.js"></script>
 {% endblock %}
 
 {% block content %}
@@ -64,6 +70,6 @@
   </a>
 {% endblock %}
 
-{% block js %}
+{% block footer_js %}
     <script src="./public/templates/js/test.js"></script>
 {% endblock %}
