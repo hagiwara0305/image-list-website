@@ -11,6 +11,7 @@ $twig = new \Twig\Environment($loader, [
     'auto_reload' => true,
     'debug' => true
 ]);
+$api = new Api();
 
 function route()
 {
@@ -60,6 +61,7 @@ function route()
 function doAction($handler, $vars)
 {
     global $twig;
+    global $api;
 
     switch ($handler) {
         case 'index_page':
@@ -68,8 +70,7 @@ function doAction($handler, $vars)
                 ]);
             break;
         case 'images_list_api_request':
-            $api_object = new Api();
-            print($api_object->get_api_json(isset($_GET['num']) ? $_GET['num'] : null));
+            print_r($api->get_default_images($_GET['num']));
             break;
     }
 }

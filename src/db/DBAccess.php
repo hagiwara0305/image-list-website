@@ -26,7 +26,15 @@ class DBAccess
     public function get_sql_execution(string $sql, array $arrayData)
     {
         $sth = $this->dbh->prepare($sql);
-        $sth->execute($arrayData);
+
+        foreach ($arrayData as $key => &$item) {
+            if(is_numeric($item)) {
+                $sth->bindParam($key, $item, PDO::PARAM_INT);
+            } else {
+                $sth->bindParam($key, $item);
+            }
+        }
+        $sth->execute();
 
         return $sth;
     }
