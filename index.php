@@ -65,12 +65,10 @@ function doAction($handler, $vars)
 
     switch ($handler) {
         case 'index_page':
-            echo $twig->render('html/index.html', [
-                'name' => 'Hello Twig'
-                ]);
+            echo $twig->render('html/index.html');
             break;
         case 'images_list_api_request':
-            print_r($api->get_default_images($_GET['num']));
+            print_r($api->get_default_images(isset($_GET['num']) ? htmlspecialchars($_GET['num']) : 1));
             break;
     }
 }

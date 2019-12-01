@@ -29,14 +29,14 @@ class Api
     }
 
     /**
-     * @param int $num
-     * @return string
+     * @param integer|null $num
+     * @return void
      */
-    public function get_default_images(int $num)
+    public function get_default_images(?int $num)
     {
         $num = isset($num) ? $num : 1;
         $sth = $this->sth->get_sql_execution(
-            'select * from illust limit :limit_number, 10',
+            'SELECT * FROM user JOIN illust ON illust.user_id = user.user_id ORDER BY create_date DESC limit :limit_number, 8',
             [
                 ':limit_number' => $num * 8
             ]
