@@ -1,25 +1,47 @@
 <?php
+
 namespace src\api;
 
+use PDO;
+use src\db\DBAccess;
+
+/**
+ * Class Api
+ * @package src\api
+ */
 class Api
 {
-    public function get_api_json($num) {
+    /**
+     * @var DBAccess
+     */
+    private $sth;
 
-        // numが存在するかつnumが数字のみで構成されているか
-        if(isset($num) && !preg_match('/[^0-9]/', $num)) {
-            // numをエスケープ(xss対策)
-            $param = htmlspecialchars($num);
-            // メイン処理
-            $arr["status"] = "yes";
-            $arr["x114"] = (string)((int)$param * 114); // 114倍
-            $arr["x514"] = (string)((int)$param * 514); // 514倍
-        } else {
-            // paramの値が不適ならstatusをnoにしてプログラム終了
-            $arr["status"] = "no";
-        }
-
-        // 配列をjson形式にデコードして出力, 第二引数は、整形するための定数
-        return json_encode($arr, JSON_PRETTY_PRINT);
+    /**
+     * Api constructor.
+     */
+    function __construct()
+    {
+        $this->sth = new DBAccess(
+            'mysql:dbname=pixiv_image_collect;host=127.0.0.1;charset=utf8;',
+            'user',
+            'user'
+        );
     }
 
+    /**
+     * @param integer|null $num
+     * @return void
+     */
+    public function get_default_images(?int $num)
+    {
+        $num = isset($num) ? $num : 1;
+        $sth = $this->sth->get_sql_execution(
+            'SELECT * FROM user JOIN illust ON illust.user_id = user.user_id ORDER BY create_date DESC limit :limit_number, 8',
+            [
+                ':limit_number' => $num * 8
+            ]
+        );
+
+        return json_encode($sth->fetchAll(PDO::FETCH_ASSOC));
+    }
 }

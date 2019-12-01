@@ -11,6 +11,7 @@ $twig = new \Twig\Environment($loader, [
     'auto_reload' => true,
     'debug' => true
 ]);
+$api = new Api();
 
 function route()
 {
@@ -60,16 +61,14 @@ function route()
 function doAction($handler, $vars)
 {
     global $twig;
+    global $api;
 
     switch ($handler) {
         case 'index_page':
-            echo $twig->render('html/index.html', [
-                'name' => 'Hello Twig'
-                ]);
+            echo $twig->render('html/index.html');
             break;
         case 'images_list_api_request':
-            $api_object = new Api();
-            print($api_object->get_api_json(isset($_GET['num']) ? $_GET['num'] : null));
+            print_r($api->get_default_images(isset($_GET['num']) ? htmlspecialchars($_GET['num']) : 1));
             break;
     }
 }
