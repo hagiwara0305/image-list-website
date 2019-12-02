@@ -36,9 +36,9 @@ class Api
     {
         $num = isset($num) ? $num : 1;
         $sth = $this->sth->get_sql_execution(
-            'SELECT * FROM user JOIN illust ON illust.user_id = user.user_id ORDER BY create_date DESC limit :limit_number, 8',
+            'SELECT * FROM user JOIN illust ON illust.user_id = user.user_id ORDER BY create_date DESC limit :limit_number, 12',
             [
-                ':limit_number' => $num * 8
+                ':limit_number' => $num * 12
             ]
         );
 
