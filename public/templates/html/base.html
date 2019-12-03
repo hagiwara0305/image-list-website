@@ -11,18 +11,16 @@
     <h1 style="text-align: center;">Pixiv Image List</h1>
 
     <!-- ナビメニュー部分 -->
-    <nav class="NavMenu">
+    <nav class="nav_menu">
         <ul>
-            <div class="Toggle">
+            <div class="toggle">
                 <span></span>
                 <span></span>
                 <span></span>
             </div>
-            <li><a href="#">Menu1</a></li>
-            <li><a href="#">Menu2</a></li>
-            <li><a href="#">Menu3</a></li>
-            <li><a href="#">Menu4</a></li>
-            <li><a href="#">Menu5</a></li>
+            {% for user in side_menu_member %}
+            <li><a href="#{{ user['user_id'] }}">{{ user['user_name'] }}</a></li>
+            {% endfor %}
         </ul>
     </nav>
 
@@ -33,14 +31,14 @@
     {% block footer_js %}{% endblock %}
     <script>
         //トグルボタンが押されたときに、クラスを付与
-        $('.Toggle').click(function() {　　
+        $('.toggle').click(function() {　　
             $(this).toggleClass('active');
 
             if ($(this).hasClass('active')) {　　
-                $('.NavMenu').addClass('active');　 //クラスを付与
+                $('.nav_menu').addClass('active');　 //クラスを付与
                 　
             } else {　　
-                $('.NavMenu').removeClass('active'); //クラスを外す
+                $('.nav_menu').removeClass('active'); //クラスを外す
                 　
             }　
         });
