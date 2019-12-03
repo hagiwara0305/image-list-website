@@ -2,16 +2,22 @@
 require './vendor/autoload.php';
 
 use src\api\Api;
+use src\db\DBAccess;
 
 header('Content-Type: text/html; charset=UTF-8');
 header('Access-Control-Allow-Origin: *');
 
-$loader = new \Twig\Loader\FilesystemLoader(__DIR__.'/public/templates');
+$loader = new \Twig\Loader\FilesystemLoader(__DIR__ . '/public/templates');
 $twig = new \Twig\Environment($loader, [
     'auto_reload' => true,
     'debug' => true
 ]);
-$api = new Api();
+$sth = new DBAccess(
+    'mysql:dbname=pixiv_image_collect;host=127.0.0.1;charset=utf8;',
+    'user',
+    'user'
+);
+$api = new Api($sth);
 
 function route()
 {
@@ -62,10 +68,18 @@ function doAction($handler, $vars)
 {
     global $twig;
     global $api;
+    global $sth;
 
     switch ($handler) {
         case 'index_page':
-            echo $twig->render('html/index.html');
+            echo $twig->render(
+                'html/index.html',
+                [
+                    'side_menu_member' => $sth->get_sql_execution(
+                        'SELECT * FROM user', []
+                    )
+                ]
+            );
             break;
         case 'images_list_api_request':
             print_r($api->get_default_images(isset($_GET['num']) ? htmlspecialchars($_GET['num']) : 1));

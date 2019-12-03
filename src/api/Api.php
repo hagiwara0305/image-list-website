@@ -17,15 +17,11 @@ class Api
     private $sth;
 
     /**
-     * Api constructor.
+     * @param DBAccess $str
      */
-    function __construct()
+    function __construct(DBAccess $str)
     {
-        $this->sth = new DBAccess(
-            'mysql:dbname=pixiv_image_collect;host=127.0.0.1;charset=utf8;',
-            'user',
-            'user'
-        );
+        $this->sth = $str;
     }
 
     /**
@@ -36,9 +32,9 @@ class Api
     {
         $num = isset($num) ? $num : 1;
         $sth = $this->sth->get_sql_execution(
-            'SELECT * FROM user JOIN illust ON illust.user_id = user.user_id ORDER BY create_date DESC limit :limit_number, 8',
+            'SELECT * FROM user JOIN illust ON illust.user_id = user.user_id ORDER BY create_date DESC limit :limit_number, 15',
             [
-                ':limit_number' => $num * 8
+                ':limit_number' => $num * 15
             ]
         );
 

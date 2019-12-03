@@ -1,30 +1,48 @@
 <html>
+
 <head>
     <title>{% block title %}{% endblock %} - My Webpage</title>
 
     <link rel="stylesheet" href="./public/templates/css/w3.css">
-    <link rel="stylesheet" href="./public/templates/css/base.css">
-    {% block css %}{% endblock %}
-    {% block header_js %}{% endblock %}
+    <link rel="stylesheet" href="./public/templates/css/base.css"> {% block css %}{% endblock %} {% block header_js %}{% endblock %}
 </head>
+
 <body>
-  <header>
-    <h1>Pixiv Image List</h1>
-  </header>
+    <h1 style="text-align: center;">Pixiv Image List</h1>
 
-  <div id="container">
-    <nav id="side-menu" class="w3-bar-block">
-      <a href="#" class="w3-bar-item w3-button">Link 1</a>
-      <a href="#" class="w3-bar-item w3-button">Link 2</a>
-      <a href="#" class="w3-bar-item w3-button">Link 3</a>
+    <!-- ナビメニュー部分 -->
+    <nav class="nav_menu">
+        <ul>
+            <div class="toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+            {% for user in side_menu_member %}
+            <li><a href="#{{ user['user_id'] }}">{{ user['user_name'] }}</a></li>
+            {% endfor %}
+        </ul>
     </nav>
-  </div>
 
+    <div id="content">
+        {% block content %}{% endblock %}
+    </div>
 
-  <div id="content">
-    {% block content %}{% endblock %}
-  </div>
+    {% block footer_js %}{% endblock %}
+    <script>
+        //トグルボタンが押されたときに、クラスを付与
+        $('.toggle').click(function() {　　
+            $(this).toggleClass('active');
 
-  {% block footer_js %}{% endblock %}
+            if ($(this).hasClass('active')) {　　
+                $('.nav_menu').addClass('active');　 //クラスを付与
+                　
+            } else {　　
+                $('.nav_menu').removeClass('active'); //クラスを外す
+                　
+            }　
+        });
+    </script>
 </body>
+
 </html>
