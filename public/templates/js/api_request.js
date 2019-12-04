@@ -22,8 +22,8 @@ $(window).on('scroll', function () {
                         $('#content').append(
                             '<a href="#image-form" class="card_rink" rel="modal:open">' +
                             '<div class="card transition">' +
-                            '<div class="card_image"' +
-                            'style="background-image: url(' + '/public/' +
+                            '<div class="card_image" id="' + item['illust_id'] +
+                            '" style="background-image: url(' + '/public/' +
                             item['saving_direcory'] + '/' + item['illust_id'] + '/' +
                             item['illust_name'] + '_0.jpg' +
                             ')">' +
@@ -39,8 +39,8 @@ $(window).on('scroll', function () {
                         $('#content').append(
                             '<a href="#image-form" class="card_rink" rel="modal:open">' +
                             '<div class="card transition">' +
-                            '<div class="card_image"' +
-                            'style="background-image: url(' + '/public/' +
+                            '<div class="card_image" id="' + item['illust_id'] +
+                            '" style="background-image: url(' + '/public/' +
                             item['saving_direcory'] + '/' +
                             item['illust_name'] + '.jpg' +
                             ')">' +
@@ -56,6 +56,31 @@ $(window).on('scroll', function () {
 
                 });
                 console.log(images_display_counter);
+
+                $('.card_image').off('click');
+                $('.card_image').click(function (event) {
+
+                    $.ajax({
+                        type: 'GET',
+                        url: 'http://localhost/api/get_user_detail?illust_id=' + event['currentTarget']['id'],
+                        dataType: 'json'
+                    }).done(function (data, textStatus, jqXHR) {
+                        $('#modal_contents').empty();
+                        console.log(data);
+                        $('#modal_contents').prepend('<p>' + data[0]['user_name'] + '</p>');
+                        $('#modal_contents').prepend('<p>' + data[0]['caption'] + '</p>');
+                        $('#modal_contents').prepend('<h4>' + data[0]['title'] + '</h4>');
+                        for(var i = 0; i < data[0]['page_count']; i++){
+                            $('#modal_contents').prepend(
+                                '<img class="modal_img" src="./public' +
+                                data[0]['saving_direcory'] + '/' +
+                                (data[0]['page_count'] > 1 ? event['currentTarget']['id'] + '/' : '') + '/' +
+                                data[0]['illust_name'] +
+                                (data[0]['page_count'] > 1 ? "_" + i : '') + '.jpg">'
+                            );
+                        }
+                    });
+                });
             });
     }
 });

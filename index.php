@@ -25,6 +25,7 @@ function route()
     $dispatcher = FastRoute\simpleDispatcher(function (FastRoute\RouteCollector $r) {
         $r->addRoute('GET', '/', 'index_page');
         $r->addRoute('GET', '/api/get-images', 'images_list_api_request');
+        $r->addRoute('GET', '/api/get_user_detail', 'get_user_detail');
     });
 
     // リクエストパラメータを取得する
@@ -83,6 +84,9 @@ function doAction($handler, $vars)
             break;
         case 'images_list_api_request':
             print_r($api->get_default_images(isset($_GET['num']) ? htmlspecialchars($_GET['num']) : 1));
+            break;
+        case 'get_user_detail':
+            print_r($api->get_user_detail(isset($_GET['illust_id']) ? htmlspecialchars($_GET['illust_id']) : 1));
             break;
     }
 }
