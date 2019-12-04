@@ -70,7 +70,7 @@ $(window).on('scroll', function () {
                         $('#modal_contents').prepend('<p>' + data[0]['user_name'] + '</p>');
                         $('#modal_contents').prepend('<p>' + data[0]['caption'] + '</p>');
                         $('#modal_contents').prepend('<h4>' + data[0]['title'] + '</h4>');
-                        for(var i = 0; i < data[0]['page_count']; i++){
+                        for(var i = data[0]['page_count'] - 1; i >= 0; i--){
                             $('#modal_contents').prepend(
                                 '<img class="modal_img" src="./public' +
                                 data[0]['saving_direcory'] + '/' +
