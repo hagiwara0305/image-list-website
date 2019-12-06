@@ -1,4 +1,6 @@
 /vendor/
 /public/pixiv_images/*
+/public/get_pixiv_illust.py
+/public/client.json
 /node_modules/*
 .idea
