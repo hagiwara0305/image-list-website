@@ -10,7 +10,9 @@ $(window).on('scroll', function () {
         double_check_flag = false;
         $.ajax({
             type: 'GET',
-            url: 'http://localhost/api/get-images?num=' + images_display_counter,
+            url: 'http://localhost/api/get-images?num=' +
+                images_display_counter +
+                '&user_id=' + this.selected_user,
             dataType: 'json'
         })
             .done(function (data, textStatus, jqXHR) {

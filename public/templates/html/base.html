@@ -19,14 +19,12 @@
                 <span></span>
             </div>
             {% for user in side_menu_member %}
-            <li><a href="#{{ user['user_id'] }}">{{ user['user_name'] }}</a></li>
+            <li><a class="side_menu_user" id="{{ user['user_id'] }}">{{ user['user_name'] }}</a></li>
             {% endfor %}
         </ul>
     </nav>
 
-    <div id="content">
-        {% block content %}{% endblock %}
-    </div>
+    {% block content %}{% endblock %}
 
     {% block footer_js %}{% endblock %}
     <script>
