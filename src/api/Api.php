@@ -42,8 +42,8 @@ class Api
             "SELECT * ".
             "FROM user JOIN illust ON illust.user_id = user.user_id ".
             ($user_id != 0 ? "WHERE illust.user_id = :user_id " : " ").
-            "ORDER BY create_date ".
-            "DESC limit :limit_number, 15",
+            "ORDER BY create_date DESC ".
+            "limit :limit_number, 15",
             $item_list
         );
 

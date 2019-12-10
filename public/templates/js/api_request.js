@@ -17,6 +17,7 @@ $(window).on('scroll', function () {
         })
             .done(function (data, textStatus, jqXHR) {
                 console.log(data);
+                console.log(images_display_counter);
                 images_display_counter++;
                 double_check_flag = true;
                 data.forEach(function (item) {
@@ -57,7 +58,6 @@ $(window).on('scroll', function () {
                     }
 
                 });
-                console.log(images_display_counter);
 
                 $('.card_image').off('click');
                 $('.card_image').click(function (event) {

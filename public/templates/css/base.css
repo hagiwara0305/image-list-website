@@ -17,6 +17,50 @@ header {
     box-shadow: 0 10px 10px 10px rgba(0, 0, 0, 0.1);
 }
 
+.dropbtn {
+    background-color: rgba(255, 255, 255, 0);
+    color: #333;
+    padding: 16px;
+    font-size: 20px;
+    border: none;
+    cursor: pointer;
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+    float: right;
+    margin: 0 50px 0 0;
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.dropdown-content a {
+    color: #333;
+    font-size: 16px;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropdown-content a:hover {
+    background-color: #f1f1f1;
+}
+.dropdown:hover .dropdown-content {
+    display: block;}
+
+/* .dropdown:hover .dropbtn {
+    background-color: #3e8e41;
+} */
+
 #side-menu a {
     height: 50px;
     font-size: 20px;
