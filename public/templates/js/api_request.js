@@ -68,6 +68,7 @@ $(window).on('scroll', function () {
                         url: 'http://localhost/api/get_user_detail?illust_id=' + event['currentTarget']['id'],
                         dataType: 'json'
                     }).done(function (data, textStatus, jqXHR) {
+                        illust_id = event['currentTarget']['id'];
                         $('#modal_contents').empty();
                         console.log(data);
                         $('#modal_contents').prepend('<p>' + data[0]['user_name'] + '</p>');

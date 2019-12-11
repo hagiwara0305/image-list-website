@@ -26,6 +26,8 @@ function route()
         $r->addRoute('GET', '/', 'index_page');
         $r->addRoute('GET', '/api/get-images', 'images_list_api_request');
         $r->addRoute('GET', '/api/get_user_detail', 'get_user_detail');
+        $r->addRoute('POST', '/api/image/delete', 'delete_image');
+        $r->addRoute('POST', '/api/image/update', 'update_favorited_count');
     });
 
     // リクエストパラメータを取得する
@@ -91,6 +93,12 @@ function doAction($handler, $vars)
             break;
         case 'get_user_detail':
             print_r($api->get_user_detail($_GET['illust_id'] != 0 ? htmlspecialchars($_GET['illust_id']) : 0));
+            break;
+        case 'update_favorited_count':
+            print_r($api->update_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0));
+            break;
+        case 'delete_image':
+            $api->delete_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0);
             break;
     }
 }
