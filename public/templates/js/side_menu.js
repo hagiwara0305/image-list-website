@@ -25,6 +25,10 @@ function clear_display() {
     $(window).trigger('scroll');
 }
 
+$('#scroll_to_top').click(function() {
+    $('body, html').animate({scrollTop: 0}, 300, 'linear');
+})
+
 function toggle_click() {
     $('.toggle').toggleClass('active');
 

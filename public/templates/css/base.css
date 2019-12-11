@@ -156,3 +156,19 @@ nav.nav_menu.active {
     -moz-transform: rotate(45deg);
     transform: rotate(45deg);
 }
+
+#scroll_to_top {
+    cursor: pointer;
+    position: fixed;
+    right: 40px;
+    bottom: 40px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  }
+  #scroll_to_top.button {
+    padding: 0 15px;
+    font-size: 20px;
+    display: inline-block;
+    border: 1px solid #333;
+    border-radius: 100px;
+    background-color: #fff;
+  }
