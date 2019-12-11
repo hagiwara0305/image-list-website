@@ -164,11 +164,36 @@ nav.nav_menu.active {
     bottom: 40px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
   }
-  #scroll_to_top.button {
+
+#scroll_to_top.button {
     padding: 0 15px;
     font-size: 20px;
     display: inline-block;
     border: 1px solid #333;
     border-radius: 100px;
     background-color: #fff;
-  }
+}
+
+.btn-square-shadow {
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #FFF;
+    border-radius: 3px;
+}
+.btn-square-shadow:active {
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    box-shadow: 0px 0px 1px rgba(0, 0, 0, 0.2);
+    border-bottom: none;
+}
+
+.favorited {
+    background-color: rgb(223, 209, 80);
+    border-bottom: solid 4px #959462;
+}
+
+.delete {
+    background-color: rgb(223, 74, 74);
+    border-bottom: solid 4px #956c62;
+}

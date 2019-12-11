@@ -26,8 +26,8 @@ function route()
         $r->addRoute('GET', '/', 'index_page');
         $r->addRoute('GET', '/api/get-images', 'images_list_api_request');
         $r->addRoute('GET', '/api/get_user_detail', 'get_user_detail');
-        $r->addRoute('GET', '/api/image', 'delete_image');
-        $r->addRoute('DELETE', '/api/image', 'update_favorited_count');
+        $r->addRoute('POST', '/api/image/delete', 'delete_image');
+        $r->addRoute('POST', '/api/image/update', 'update_favorited_count');
     });
 
     // リクエストパラメータを取得する
@@ -72,6 +72,7 @@ function doAction($handler, $vars)
     global $twig;
     global $api;
     global $sth;
+    $delete_param = array();
 
     switch ($handler) {
         case 'index_page':
@@ -94,19 +95,11 @@ function doAction($handler, $vars)
         case 'get_user_detail':
             print_r($api->get_user_detail($_GET['illust_id'] != 0 ? htmlspecialchars($_GET['illust_id']) : 0));
             break;
-        case 'delete_image':
-            print_r('[
-                {
-                    "id": 1
-                }
-            ]');
-            break;
         case 'update_favorited_count':
-            print_r('[
-                {
-                    "id": 2
-                }
-            ]');
+            print_r($api->get_user_detail($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0));
+            break;
+        case 'delete_image':
+            print_r($api->get_user_detail($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0));
             break;
     }
 }
