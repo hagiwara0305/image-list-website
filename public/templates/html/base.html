@@ -4,43 +4,52 @@
     <title>{% block title %}{% endblock %} - My Webpage</title>
 
     <link rel="stylesheet" href="./public/templates/css/w3.css">
-    <link rel="stylesheet" href="./public/templates/css/base.css"> {% block css %}{% endblock %} {% block header_js %}{% endblock %}
+    <link rel="stylesheet" href="./public/templates/css/base.css"> {% block css %}{% endblock %}
+    {% block header_js %}{% endblock %}
 </head>
 
 <body>
-    <h1 style="text-align: center;">Pixiv Image List</h1>
-
-    <!-- ナビメニュー部分 -->
-    <nav class="nav_menu">
-        <ul>
-            <div class="toggle">
-                <span></span>
-                <span></span>
-                <span></span>
+    <div>
+        <div class="dropdown" style="float:right;">
+            <button class="dropbtn">並び替え▼</button>
+            <div class="dropdown-content">
+                <a>作成日付順</a>
+                <a>閲覧数順</a>
+                <a>お気に入り順</a>
             </div>
-            {% for user in side_menu_member %}
-            <li><a href="#{{ user['user_id'] }}">{{ user['user_name'] }}</a></li>
-            {% endfor %}
-        </ul>
-    </nav>
+        </div>
+        <h1 style="text-align: center;">Pixiv Image List</h1>
 
-    <div id="content">
-        {% block content %}{% endblock %}
+        <!-- ナビメニュー部分 -->
+        <nav class="nav_menu">
+            <ul>
+                <div class="toggle">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+                {% for user in side_menu_member %}
+                <li><a class="side_menu_user" id="{{ user['user_id'] }}">{{ user['user_name'] }}</a></li>
+                {% endfor %}
+            </ul>
+        </nav>
     </div>
+
+    {% block content %}{% endblock %}
 
     {% block footer_js %}{% endblock %}
     <script>
         //トグルボタンが押されたときに、クラスを付与
-        $('.toggle').click(function() {　　
+        $('.toggle').click(function () {
             $(this).toggleClass('active');
 
-            if ($(this).hasClass('active')) {　　
+            if ($(this).hasClass('active')) {
                 $('.nav_menu').addClass('active');　 //クラスを付与
-                　
-            } else {　　
+
+            } else {
                 $('.nav_menu').removeClass('active'); //クラスを外す
-                　
-            }　
+
+            }
         });
     </script>
 </body>

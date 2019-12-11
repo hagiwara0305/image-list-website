@@ -83,10 +83,13 @@ function doAction($handler, $vars)
             );
             break;
         case 'images_list_api_request':
-            print_r($api->get_default_images(isset($_GET['num']) ? htmlspecialchars($_GET['num']) : 1));
+            print_r($api->get_default_images(
+                isset($_GET['num']) ? htmlspecialchars($_GET['num']) : 1,
+                isset($_GET['user_id']) ? htmlspecialchars($_GET['user_id']) : null
+            ));
             break;
         case 'get_user_detail':
-            print_r($api->get_user_detail(isset($_GET['illust_id']) ? htmlspecialchars($_GET['illust_id']) : 1));
+            print_r($api->get_user_detail($_GET['illust_id'] != 0 ? htmlspecialchars($_GET['illust_id']) : 0));
             break;
     }
 }
