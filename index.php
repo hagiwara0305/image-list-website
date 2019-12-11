@@ -72,7 +72,6 @@ function doAction($handler, $vars)
     global $twig;
     global $api;
     global $sth;
-    $delete_param = array();
 
     switch ($handler) {
         case 'index_page':
@@ -96,10 +95,10 @@ function doAction($handler, $vars)
             print_r($api->get_user_detail($_GET['illust_id'] != 0 ? htmlspecialchars($_GET['illust_id']) : 0));
             break;
         case 'update_favorited_count':
-            print_r($api->get_user_detail($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0));
+            print_r($api->update_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0));
             break;
         case 'delete_image':
-            print_r($api->get_user_detail($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0));
+            $api->update_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0);
             break;
     }
 }
