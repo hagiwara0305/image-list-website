@@ -98,7 +98,7 @@ function doAction($handler, $vars)
             print_r($api->update_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0));
             break;
         case 'delete_image':
-            $api->update_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0);
+            $api->delete_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0);
             break;
     }
 }

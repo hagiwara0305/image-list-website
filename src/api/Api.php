@@ -75,6 +75,7 @@ class Api
 
     /**
      * @param integer $illust_id
+     * @return void
      */
     public function update_date(int $illust_id)
     {
@@ -97,5 +98,20 @@ class Api
         );
 
         return json_encode($sth->fetchAll(PDO::FETCH_ASSOC));
+    }
+
+    /**
+     * @param integer $illust_id
+     * @return void
+     */
+    public function delete_date(int $illust_id)
+    {
+        $sth = $this->sth->get_sql_execution(
+            "DELETE FROM illust
+            WHERE illust_id = :illust_id",
+            [
+                ':illust_id' => $illust_id
+            ]
+        );
     }
 }
