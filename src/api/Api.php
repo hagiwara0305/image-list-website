@@ -27,9 +27,10 @@ class Api
     /**
      * @param integer|null $num
      * @param integer|null $user_id
+     * @param string|null $sort_item
      * @return json
      */
-    public function get_default_images(?int $num, ?int $user_id)
+    public function get_default_images(?int $num, ?int $user_id, ?string $sort_item)
     {
         $num = isset($num) ? $num : 1;
 
@@ -42,8 +43,8 @@ class Api
             "SELECT * ".
             "FROM user JOIN illust ON illust.user_id = user.user_id ".
             ($user_id != 0 ? "WHERE illust.user_id = :user_id " : " ").
-            "ORDER BY create_date DESC ".
-            "limit :limit_number, 15",
+            "ORDER BY " . ($sort_item === null ? "create_date" : $sort_item).
+            " DESC limit :limit_number, 15",
             $item_list
         );
 

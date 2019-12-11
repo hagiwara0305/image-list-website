@@ -12,7 +12,8 @@ $(window).on('scroll', function () {
             type: 'GET',
             url: 'http://localhost/api/get-images?num=' +
                 images_display_counter +
-                '&user_id=' + this.selected_user,
+                '&user_id=' + this.selected_user +
+                '&sort_item=' + this.selected_sort,
             dataType: 'json'
         })
             .done(function (data, textStatus, jqXHR) {
