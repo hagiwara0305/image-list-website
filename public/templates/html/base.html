@@ -39,18 +39,6 @@
 
     {% block footer_js %}{% endblock %}
     <script>
-        //トグルボタンが押されたときに、クラスを付与
-        $('.toggle').click(function () {
-            $(this).toggleClass('active');
-
-            if ($(this).hasClass('active')) {
-                $('.nav_menu').addClass('active');　 //クラスを付与
-
-            } else {
-                $('.nav_menu').removeClass('active'); //クラスを外す
-
-            }
-        });
     </script>
 </body>
 
