@@ -3,7 +3,7 @@ var images_display_counter = 1;
 var double_check_flag = true;
 
 $(window).on('scroll', function () {
-    var winh = $(window).innerHeight() - 10;
+    let winh = $(window).innerHeight() - 10;
 
     /* 一番下までスクロールした場合imageを追加 */
     if ((winh - h) <= $(window).scrollTop() && double_check_flag) {
@@ -74,7 +74,7 @@ $(window).on('scroll', function () {
                         $('#modal_contents').prepend('<p>' + data[0]['user_name'] + '</p>');
                         $('#modal_contents').prepend('<p>' + data[0]['caption'] + '</p>');
                         $('#modal_contents').prepend('<h4>' + data[0]['title'] + '</h4>');
-                        for(var i = data[0]['page_count'] - 1; i >= 0; i--){
+                        for(let i = data[0]['page_count'] - 1; i >= 0; i--){
                             $('#modal_contents').prepend(
                                 '<img class="modal_img" src="./public' +
                                 data[0]['saving_direcory'] + '/' +

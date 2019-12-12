@@ -1,7 +1,7 @@
 var illust_id = 0;
 
 $('.delete').click(function() {
-    var result = window.confirm("本当に削除しますか？");
+    let result = window.confirm("本当に削除しますか？");
 
     if(result){
         alert('削除しました');
