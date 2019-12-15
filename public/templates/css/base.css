@@ -158,6 +158,9 @@ nav.nav_menu.active {
 }
 
 #scroll_to_top {
+    height: 70px;
+    width: 70px;
+    text-align: center;
     cursor: pointer;
     position: fixed;
     right: 40px;
