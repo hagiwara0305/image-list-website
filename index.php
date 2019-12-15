@@ -93,6 +93,7 @@ function doAction($handler, $vars)
             break;
         case 'get_user_detail':
             print_r($api->get_user_detail($_GET['illust_id'] != 0 ? htmlspecialchars($_GET['illust_id']) : 0));
+            // exec('python /public/get_pixiv_illust.py 4935');
             break;
         case 'update_favorited_count':
             print_r($api->update_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0));

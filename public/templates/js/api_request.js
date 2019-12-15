@@ -27,7 +27,7 @@ $(window).on('scroll', function () {
                             '<a href="#image-form" class="card_rink" rel="modal:open">' +
                             '<div class="card transition">' +
                             '<div class="card_image" id="' + item['illust_id'] +
-                            '" style="background-image: url(' + '/public/' +
+                            '" style="background-image: url(' + '/' +
                             item['saving_direcory'] + '/' + item['illust_id'] + '/' +
                             item['illust_name'] + '_0.jpg' +
                             ')">' +
@@ -44,7 +44,7 @@ $(window).on('scroll', function () {
                             '<a href="#image-form" class="card_rink" rel="modal:open">' +
                             '<div class="card transition">' +
                             '<div class="card_image" id="' + item['illust_id'] +
-                            '" style="background-image: url(' + '/public/' +
+                            '" style="background-image: url(' + '/' +
                             item['saving_direcory'] + '/' +
                             item['illust_name'] + '.jpg' +
                             ')">' +
@@ -76,7 +76,7 @@ $(window).on('scroll', function () {
                         $('#modal_contents').prepend('<h4>' + data[0]['title'] + '</h4>');
                         for(let i = data[0]['page_count'] - 1; i >= 0; i--){
                             $('#modal_contents').prepend(
-                                '<img class="modal_img" src="./public' +
+                                '<img class="modal_img" src="./' +
                                 data[0]['saving_direcory'] + '/' +
                                 (data[0]['page_count'] > 1 ? event['currentTarget']['id'] + '/' : '') + '/' +
                                 data[0]['illust_name'] +
