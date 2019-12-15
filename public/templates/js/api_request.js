@@ -3,7 +3,7 @@ var images_display_counter = 1;
 var double_check_flag = true;
 
 $(window).on('scroll', function () {
-    var winh = $(window).innerHeight() - 10;
+    let winh = $(window).innerHeight() - 10;
 
     /* 一番下までスクロールした場合imageを追加 */
     if ((winh - h) <= $(window).scrollTop() && double_check_flag) {
@@ -27,7 +27,7 @@ $(window).on('scroll', function () {
                             '<a href="#image-form" class="card_rink" rel="modal:open">' +
                             '<div class="card transition">' +
                             '<div class="card_image" id="' + item['illust_id'] +
-                            '" style="background-image: url(' + '/public/' +
+                            '" style="background-image: url(' + '/' +
                             item['saving_direcory'] + '/' + item['illust_id'] + '/' +
                             item['illust_name'] + '_0.jpg' +
                             ')">' +
@@ -44,7 +44,7 @@ $(window).on('scroll', function () {
                             '<a href="#image-form" class="card_rink" rel="modal:open">' +
                             '<div class="card transition">' +
                             '<div class="card_image" id="' + item['illust_id'] +
-                            '" style="background-image: url(' + '/public/' +
+                            '" style="background-image: url(' + '/' +
                             item['saving_direcory'] + '/' +
                             item['illust_name'] + '.jpg' +
                             ')">' +
@@ -74,9 +74,9 @@ $(window).on('scroll', function () {
                         $('#modal_contents').prepend('<p>' + data[0]['user_name'] + '</p>');
                         $('#modal_contents').prepend('<p>' + data[0]['caption'] + '</p>');
                         $('#modal_contents').prepend('<h4>' + data[0]['title'] + '</h4>');
-                        for(var i = data[0]['page_count'] - 1; i >= 0; i--){
+                        for(let i = data[0]['page_count'] - 1; i >= 0; i--){
                             $('#modal_contents').prepend(
-                                '<img class="modal_img" src="./public' +
+                                '<img class="modal_img" src="./' +
                                 data[0]['saving_direcory'] + '/' +
                                 (data[0]['page_count'] > 1 ? event['currentTarget']['id'] + '/' : '') + '/' +
                                 data[0]['illust_name'] +
