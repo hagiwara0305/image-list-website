@@ -28,6 +28,8 @@ function route()
         $r->addRoute('GET', '/api/get_user_detail', 'get_user_detail');
         $r->addRoute('POST', '/api/image/delete', 'delete_image');
         $r->addRoute('POST', '/api/image/update', 'update_favorited_count');
+        $r->addRoute('GET', '/api/get_images', 'get_images');
+
     });
 
     // リクエストパラメータを取得する
@@ -100,6 +102,10 @@ function doAction($handler, $vars)
             break;
         case 'delete_image':
             $api->delete_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0);
+            break;
+        case 'get_images':
+            exec('python ./public/get_pixiv_illust.py '.$_GET['user_id'], $output);
+            print_r($output);
             break;
     }
 }
