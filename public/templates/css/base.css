@@ -200,3 +200,42 @@ nav.nav_menu.active {
     background-color: rgb(223, 74, 74);
     border-bottom: solid 4px #956c62;
 }
+
+#user_images{
+    font-size: 16px;
+    width: 100%;
+    border: none;
+    outline: none;
+    padding-bottom: 8px;
+    box-sizing: border-box;
+}
+
+.text_underline{
+    position: relative;
+    border-top: 1px solid #c2c2c2;
+}
+
+.text_underline::before,
+.text_underline::after{
+    position: absolute;
+    bottom: 0px;
+    width: 0px;
+    height: 1px;
+    content: '';
+    background-color: #3be5ae;
+    transition: all 0.5s;
+    -webkit-transition: all 0.5s;
+}
+
+.text_underline::before{
+    left: 50%;
+}
+
+.text_underline::after{
+    right: 50%;
+}
+
+#user_images:focus + .text_underline::before,
+#user_images:focus + .text_underline::after{
+    width: 50%;
+}
