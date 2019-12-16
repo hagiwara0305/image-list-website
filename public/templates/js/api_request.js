@@ -24,11 +24,11 @@ $(window).on('scroll', function () {
                 data.forEach(function (item) {
                     if (item['page_count'] > 1) {
                         $('#content').append(
-                            '<a href="#image-form" class="card_rink" rel="modal:open">' +
+                            '<a href="#image-form" class="card_rink" rel="modal:open" id="' + item['illust_id'] + '">' +
                             '<div class="card transition">' +
-                            '<div class="card_image" id="' + item['illust_id'] +
-                            '" style="background-image: url(' + '/' +
-                            item['saving_direcory'] + '/' + item['illust_id'] + '/' +
+                            '<div class="card_image" style="background-image: url(' + '/' +
+                            item['saving_direcory'] + '/' +
+                            item['illust_id'] + '/' +
                             item['illust_name'] + '_0.jpg' +
                             ')">' +
                             '</div>' +
@@ -41,10 +41,9 @@ $(window).on('scroll', function () {
                         );
                     } else {
                         $('#content').append(
-                            '<a href="#image-form" class="card_rink" rel="modal:open">' +
+                            '<a href="#image-form" class="card_rink" rel="modal:open" id="' + item['illust_id'] + '">' +
                             '<div class="card transition">' +
-                            '<div class="card_image" id="' + item['illust_id'] +
-                            '" style="background-image: url(' + '/' +
+                            '<div class="card_image" style="background-image: url(' + '/' +
                             item['saving_direcory'] + '/' +
                             item['illust_name'] + '.jpg' +
                             ')">' +
@@ -60,8 +59,8 @@ $(window).on('scroll', function () {
 
                 });
 
-                $('.card_image').off('click');
-                $('.card_image').click(function (event) {
+                $('.card_rink').off('click');
+                $('.card_rink').click(function (event) {
 
                     $.ajax({
                         type: 'GET',
