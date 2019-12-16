@@ -12,7 +12,7 @@ $(window).on('scroll', function () {
             type: 'GET',
             url: 'http://localhost/api/get-images?num=' +
                 images_display_counter +
-                '&user_id=' + this.selected_user +
+                '&user_id=' + this.selected_user_id +
                 '&sort_item=' + this.selected_sort,
             dataType: 'json'
         })
@@ -74,7 +74,7 @@ $(window).on('scroll', function () {
                         $('#modal_contents').prepend('<p>' + data[0]['user_name'] + '</p>');
                         $('#modal_contents').prepend('<p>' + data[0]['caption'] + '</p>');
                         $('#modal_contents').prepend('<h4>' + data[0]['title'] + '</h4>');
-                        for(let i = data[0]['page_count'] - 1; i >= 0; i--){
+                        for (let i = data[0]['page_count'] - 1; i >= 0; i--) {
                             $('#modal_contents').prepend(
                                 '<img class="modal_img" src="./' +
                                 data[0]['saving_direcory'] + '/' +

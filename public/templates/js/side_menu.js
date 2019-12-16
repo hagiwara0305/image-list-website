@@ -1,9 +1,9 @@
-var selected_user = 0;
+var selected_user_id = 0;
 var selected_sort = 'create_date';
 
 $('.side_menu_user').click(function (event) {
     console.log(event['currentTarget']['id']);
-    selected_user = event['currentTarget']['id'];
+    selected_user_id = event['currentTarget']['id'];
 
     toggle_click();
     clear_display();
@@ -25,9 +25,32 @@ function clear_display() {
     $(window).trigger('scroll');
 }
 
-$('#scroll_to_top').click(function() {
-    $('body, html').animate({scrollTop: 0}, 300, 'linear');
-})
+$('#scroll_to_top').click(function () {
+    $('body, html').animate({ scrollTop: 0 }, 300, 'linear');
+});
+
+$('#user_images').keypress(function (e) {
+    if (e.which == 13) {
+        alert('追加します');
+        user_id = e['target'].value;
+        user_id_input = $('#user_images');
+        e['target'].value = '';
+        user_id_input.prop('disabled', true);
+
+        $.ajax({
+            type: 'GET',
+            url: 'http://localhost/api/get_images?user_id=' + user_id,
+            dataType: 'json',
+        }).then(
+            function (data) {
+            },
+            function (data) {
+                alert('追加しました');
+                window.location.href = '/';
+            }
+        );
+    }
+});
 
 function toggle_click() {
     $('.toggle').toggleClass('active');
