@@ -30,6 +30,12 @@
                     <span></span>
                     <span></span>
                 </div>
+                <li>
+                    <div class="group">
+                        <input id="user_images" type="text" placeholder="Pixivのuser_idを入力" src="/">
+                        <div class="text_underline"></div>
+                     </div>
+                </li>
                 {% for user in side_menu_member %}
                 <li><a class="side_menu_user" id="{{ user['user_id'] }}">{{ user['user_name'] }}</a></li>
                 {% endfor %}
