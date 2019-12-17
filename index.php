@@ -19,6 +19,9 @@ $sth = new DBAccess(
 );
 $api = new Api($sth);
 
+/**
+ * URｌのルーティングを設定
+ */
 function route()
 {
     // ルーティングのルールを指定する
@@ -29,7 +32,6 @@ function route()
         $r->addRoute('POST', '/api/image/delete', 'delete_image');
         $r->addRoute('POST', '/api/image/update', 'update_favorited_count');
         $r->addRoute('GET', '/api/get_images', 'get_images');
-
     });
 
     // リクエストパラメータを取得する
@@ -69,6 +71,9 @@ function route()
     }
 }
 
+/**
+ * URｌ別に処理を分岐させる設定
+ */
 function doAction($handler, $vars)
 {
     global $twig;
@@ -81,7 +86,8 @@ function doAction($handler, $vars)
                 'html/index.html',
                 [
                     'side_menu_member' => $sth->get_sql_execution(
-                        'SELECT * FROM user', []
+                        'SELECT * FROM user',
+                        []
                     )
                 ]
             );
@@ -103,7 +109,7 @@ function doAction($handler, $vars)
             $api->delete_date($_POST['illust_id'] != 0 ? htmlspecialchars($_POST['illust_id']) : 0);
             break;
         case 'get_images':
-            exec('python ./public/get_pixiv_illust.py '.$_GET['user_id'].' &', $output);
+            exec('python ./public/get_pixiv_illust.py ' . $_GET['user_id'] . ' &', $output);
             print_r($output);
             break;
     }

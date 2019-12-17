@@ -1,5 +1,6 @@
 var illust_id = 0;
 
+/* 削除処理 CRADのD */
 $('.delete').click(function () {
     let result = window.confirm("本当に削除しますか？");
 
@@ -17,6 +18,7 @@ $('.delete').click(function () {
     }
 });
 
+/* 閲覧数を増やす　CRADのA */
 function views_count() {
     console.log(illust_id);
     $.ajax({

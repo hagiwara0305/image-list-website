@@ -2,6 +2,9 @@ var h = $(window).innerHeight();
 var images_display_counter = 1;
 var double_check_flag = true;
 
+/**
+ * スクロール時にデータを読み込み、各設定を行う
+ */
 $(window).on('scroll', function () {
     let winh = $(window).innerHeight() - 10;
 
@@ -17,8 +20,7 @@ $(window).on('scroll', function () {
             dataType: 'json'
         })
             .done(function (data, textStatus, jqXHR) {
-                console.log(data);
-                console.log(images_display_counter);
+                /* 画像を非同期で取得 */
                 images_display_counter++;
                 double_check_flag = true;
                 data.forEach(function (item) {
@@ -59,6 +61,7 @@ $(window).on('scroll', function () {
 
                 });
 
+                /* 画像にクリックイベントを追加 */
                 $('.card_rink').off('click');
                 $('.card_rink').click(function (event) {
                     $.ajax({
@@ -66,6 +69,7 @@ $(window).on('scroll', function () {
                         url: 'http://localhost/api/get_user_detail?illust_id=' + event['currentTarget']['id'],
                         dataType: 'json'
                     }).done(function (data, textStatus, jqXHR) {
+                        /* 詳細データの取得、取得出来たら表示 */
                         illust_id = event['currentTarget']['id'];
                         $('#modal_contents').empty();
                         console.log(data);
@@ -82,6 +86,7 @@ $(window).on('scroll', function () {
                             );
                         }
 
+                        /* 閲覧のカウントをする */
                         views_count();
                     });
                 });
