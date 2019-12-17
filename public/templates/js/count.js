@@ -1,9 +1,9 @@
 var illust_id = 0;
 
-$('.delete').click(function() {
+$('.delete').click(function () {
     let result = window.confirm("本当に削除しますか？");
 
-    if(result){
+    if (result) {
         alert('削除しました');
 
         $.ajax({
@@ -17,7 +17,8 @@ $('.delete').click(function() {
     }
 });
 
-$('.favorited').click(function() {
+function views_count() {
+    console.log(illust_id);
     $.ajax({
         type: 'POST',
         url: 'http://localhost/api/image/update',
@@ -28,4 +29,4 @@ $('.favorited').click(function() {
     }).done(function (data, textStatus, jqXHR) {
         console.log(data);
     });
-});
+}

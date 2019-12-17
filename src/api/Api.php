@@ -80,7 +80,7 @@ class Api
     public function update_date(int $illust_id)
     {
         $sth = $this->sth->get_sql_execution(
-            "SELECT illust_id, favorited_count
+            "SELECT illust_id, views_count
             from illust
             WHERE illust.illust_id = :illust_id",
             [
@@ -89,8 +89,8 @@ class Api
         );
 
         $sth = $this->sth->get_sql_execution(
-            "UPDATE illust SET favorited_count = " .
-            (($sth->fetch())['favorited_count'] + 1) .
+            "UPDATE illust SET views_count = " .
+            (($sth->fetch())['views_count'] + 1) .
             " WHERE illust.illust_id = ".$illust_id,
             [
                 ':illust_id' => $illust_id

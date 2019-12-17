@@ -61,7 +61,6 @@ $(window).on('scroll', function () {
 
                 $('.card_rink').off('click');
                 $('.card_rink').click(function (event) {
-
                     $.ajax({
                         type: 'GET',
                         url: 'http://localhost/api/get_user_detail?illust_id=' + event['currentTarget']['id'],
@@ -82,6 +81,8 @@ $(window).on('scroll', function () {
                                 (data[0]['page_count'] > 1 ? "_" + i : '') + '.jpg">'
                             );
                         }
+
+                        views_count();
                     });
                 });
             });
