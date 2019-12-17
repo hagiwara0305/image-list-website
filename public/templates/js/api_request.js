@@ -2,6 +2,9 @@ var h = $(window).innerHeight();
 var images_display_counter = 1;
 var double_check_flag = true;
 
+/**
+ * スクロール時にデータを読み込み、各設定を行う
+ */
 $(window).on('scroll', function () {
     let winh = $(window).innerHeight() - 10;
 
@@ -17,18 +20,17 @@ $(window).on('scroll', function () {
             dataType: 'json'
         })
             .done(function (data, textStatus, jqXHR) {
-                console.log(data);
-                console.log(images_display_counter);
+                /* 画像を非同期で取得 */
                 images_display_counter++;
                 double_check_flag = true;
                 data.forEach(function (item) {
                     if (item['page_count'] > 1) {
                         $('#content').append(
-                            '<a href="#image-form" class="card_rink" rel="modal:open">' +
+                            '<a href="#image-form" class="card_rink" rel="modal:open" id="' + item['illust_id'] + '">' +
                             '<div class="card transition">' +
-                            '<div class="card_image" id="' + item['illust_id'] +
-                            '" style="background-image: url(' + '/' +
-                            item['saving_direcory'] + '/' + item['illust_id'] + '/' +
+                            '<div class="card_image" style="background-image: url(' + '/' +
+                            item['saving_direcory'] + '/' +
+                            item['illust_id'] + '/' +
                             item['illust_name'] + '_0.jpg' +
                             ')">' +
                             '</div>' +
@@ -41,10 +43,9 @@ $(window).on('scroll', function () {
                         );
                     } else {
                         $('#content').append(
-                            '<a href="#image-form" class="card_rink" rel="modal:open">' +
+                            '<a href="#image-form" class="card_rink" rel="modal:open" id="' + item['illust_id'] + '">' +
                             '<div class="card transition">' +
-                            '<div class="card_image" id="' + item['illust_id'] +
-                            '" style="background-image: url(' + '/' +
+                            '<div class="card_image" style="background-image: url(' + '/' +
                             item['saving_direcory'] + '/' +
                             item['illust_name'] + '.jpg' +
                             ')">' +
@@ -60,14 +61,15 @@ $(window).on('scroll', function () {
 
                 });
 
-                $('.card_image').off('click');
-                $('.card_image').click(function (event) {
-
+                /* 画像にクリックイベントを追加 */
+                $('.card_rink').off('click');
+                $('.card_rink').click(function (event) {
                     $.ajax({
                         type: 'GET',
                         url: 'http://localhost/api/get_user_detail?illust_id=' + event['currentTarget']['id'],
                         dataType: 'json'
                     }).done(function (data, textStatus, jqXHR) {
+                        /* 詳細データの取得、取得出来たら表示 */
                         illust_id = event['currentTarget']['id'];
                         $('#modal_contents').empty();
                         console.log(data);
@@ -83,6 +85,9 @@ $(window).on('scroll', function () {
                                 (data[0]['page_count'] > 1 ? "_" + i : '') + '.jpg">'
                             );
                         }
+
+                        /* 閲覧のカウントをする */
+                        views_count();
                     });
                 });
             });
